@@ -5,18 +5,7 @@ let givenNums = document.querySelectorAll(".given-number");
 let nums = document.querySelectorAll(".number-control");
 let btn = document.querySelector("#candidate-switch");
 
-btn.setAttribute("move", "normal");
-
 let activeCell;
-
-btn.addEventListener("click", function(){
-    if(btn.getAttribute("move") === "normal"){
-        btn.setAttribute("move", "candidate");
-
-    }else{
-        btn.setAttribute("move", "normal");
-    }
-})
 
 cells.forEach(cell => {
     cell.addEventListener("click", function(){
@@ -30,9 +19,9 @@ cells.forEach(cell => {
 
 nums.forEach(num => {
     num.addEventListener("click", function(){
-        if(btn.getAttribute("move") === "normal"){
+        if(btn.checked === false){
             activeCell.lastElementChild.innerText = num.innerText;
-        }else if(btn.getAttribute("move") === "candidate"){
+        }else if(btn.checked === true){
             if(activeCell.firstElementChild.innerText.includes(num.innerText)){
                 let str = activeCell.firstElementChild.innerText.replace(num.innerText, '');
                 activeCell.firstElementChild.innerText = str;
